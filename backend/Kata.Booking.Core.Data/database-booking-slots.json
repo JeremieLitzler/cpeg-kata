@@ -1,0 +1,114 @@
+[
+  {
+    "RoomId": "f81d4fae-7dec-11e4-ba95-123e4567e89e",
+    "RoomName": "Salève",
+    "BookingSlots": [
+      {
+        "StartTime": "09:00:00",
+        "EndTime": "09:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "09:30:00",
+        "EndTime": "10:00:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "10:00:00",
+        "EndTime": "10:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "10:30:00",
+        "EndTime": "11:00:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "11:00:00",
+        "EndTime": "11:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "11:30:00",
+        "EndTime": "12:00:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "14:00:00",
+        "EndTime": "14:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "14:30:00",
+        "EndTime": "15:00:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "15:00:00",
+        "EndTime": "15:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "15:30:00",
+        "EndTime": "16:00:00",
+        "IsBooked": false
+      }
+    ]
+  },
+  {
+    "RoomId": "f81d4fae-7dec-11e4-ba95-123e4567e89f",
+    "RoomName": "Jura",
+    "BookingSlots": [
+      {
+        "StartTime": "09:00:00",
+        "EndTime": "09:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "09:30:00",
+        "EndTime": "10:00:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "10:00:00",
+        "EndTime": "10:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "10:30:00",
+        "EndTime": "11:00:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "11:00:00",
+        "EndTime": "11:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "11:30:00",
+        "EndTime": "12:00:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "14:00:00",
+        "EndTime": "14:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "14:30:00",
+        "EndTime": "15:00:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "15:00:00",
+        "EndTime": "15:30:00",
+        "IsBooked": false
+      },
+      {
+        "StartTime": "15:30:00",
+        "EndTime": "16:00:00",
+        "IsBooked": false
+      }
+    ]
+  }
+]
