@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "JUPwQj+KZIBNqZd5AhEK6xE4IrQJkWhcO1OA3DVop2RYHc9JZuF8SyL7C0+YAPQAuz/3BYNab7okRYYxY0GrgQ==",
+  "dgSpecHash": "0wiFCfMdUSIITFeQwoeZSwFCajVKCUpBUVVRaLvk8xK6SBtj7ciompASDGVBtS3a4y8O4G4YsSUs3pLGYUomGw==",
   "success": true,
   "projectFilePath": "C:\\dev\\cpeg-kata\\backend\\Kata.Booking.Core.Data\\Kata.Booking.Core.Data.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
