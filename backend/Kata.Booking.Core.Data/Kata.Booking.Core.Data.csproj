@@ -6,4 +6,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kata.Booking.Core.Contracts\Kata.Booking.Core.Contracts.csproj" />
+    <ProjectReference Include="..\Kata.Booking.Core.Tools\Kata.Booking.Core.Tools.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="databases\bookings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="databases\rooms.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

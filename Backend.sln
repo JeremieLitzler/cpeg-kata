@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kata.Booking.Core.Business", "backend\Kata.Booking.Core.Business\Kata.Booking.Core.Business.csproj", "{2BF77A9C-4B7B-4E99-AE84-976CD70AADED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kata.Booking.Core.Contracts", "backend\Kata.Booking.Core.Contracts\Kata.Booking.Core.Contracts.csproj", "{D68AF482-F091-4CAD-AACD-A36C7E7DF71C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kata.Booking.Core.Data", "backend\Kata.Booking.Core.Data\Kata.Booking.Core.Data.csproj", "{5FBA6CFC-76E2-42C7-8E36-BE800F950068}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kata.Booking.Core.Data.Tests", "backend\Kata.Booking.Core.Data.Tests\Kata.Booking.Core.Data.Tests.csproj", "{7B0D8AE2-33D6-471F-B20B-3670128B09D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kata.Booking.Core.Tools", "backend\Kata.Booking.Core.Tools\Kata.Booking.Core.Tools.csproj", "{F35F7D71-C9E3-4CE9-B643-DD112EDCF3FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kata.Booking.Web.Api", "backend\Kata.Booking.Web.Api\Kata.Booking.Web.Api.csproj", "{88B667E7-F2DD-4D59-8F40-B92C138A750B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BF77A9C-4B7B-4E99-AE84-976CD70AADED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF77A9C-4B7B-4E99-AE84-976CD70AADED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF77A9C-4B7B-4E99-AE84-976CD70AADED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF77A9C-4B7B-4E99-AE84-976CD70AADED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D68AF482-F091-4CAD-AACD-A36C7E7DF71C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D68AF482-F091-4CAD-AACD-A36C7E7DF71C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D68AF482-F091-4CAD-AACD-A36C7E7DF71C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D68AF482-F091-4CAD-AACD-A36C7E7DF71C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBA6CFC-76E2-42C7-8E36-BE800F950068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBA6CFC-76E2-42C7-8E36-BE800F950068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBA6CFC-76E2-42C7-8E36-BE800F950068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBA6CFC-76E2-42C7-8E36-BE800F950068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B0D8AE2-33D6-471F-B20B-3670128B09D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0D8AE2-33D6-471F-B20B-3670128B09D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B0D8AE2-33D6-471F-B20B-3670128B09D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B0D8AE2-33D6-471F-B20B-3670128B09D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35F7D71-C9E3-4CE9-B643-DD112EDCF3FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35F7D71-C9E3-4CE9-B643-DD112EDCF3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35F7D71-C9E3-4CE9-B643-DD112EDCF3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35F7D71-C9E3-4CE9-B643-DD112EDCF3FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B667E7-F2DD-4D59-8F40-B92C138A750B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B667E7-F2DD-4D59-8F40-B92C138A750B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B667E7-F2DD-4D59-8F40-B92C138A750B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B667E7-F2DD-4D59-8F40-B92C138A750B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB845626-EC25-451E-AA3C-3DB19428FECD}
+	EndGlobalSection
+EndGlobal
