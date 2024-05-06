@@ -36,7 +36,7 @@ namespace BookingWebApi.Controllers
         [SwaggerResponse(500, "Thrown when unhandled exception is raised.")]
         [HttpGet]
         [Route("")]
-        public IEnumerable<Room> GetBookingsByRoom()
+        public IEnumerable<Room> GetRooms()
         {
             return _roomsService.GetRooms();
         }
@@ -49,7 +49,7 @@ namespace BookingWebApi.Controllers
         [SwaggerResponse(500, "Thrown when unhandled exception is raised.")]
         [HttpGet]
         [Route("{roomId}/availability/date={requestDate}")]
-        public IEnumerable<AvailableTimeSlot> GetTimeSlots(string roomId, DateTime requestDate)
+        public IEnumerable<TimeSlot> GetTimeSlots(string roomId, DateTime requestDate)
         {
             return _roomsService.GetAvailability(roomId, requestDate);
         }

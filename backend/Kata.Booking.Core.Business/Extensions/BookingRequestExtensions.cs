@@ -19,11 +19,11 @@ namespace Kata.Booking.Core.Business.Extensions
                 BookingTimeSlot = new BookingTimeSlot()
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Date = request.AvailableTimeSlot?.Date,
-                    StartTime = request.AvailableTimeSlot?.StartTime,
-                    EndTime = request.AvailableTimeSlot?.EndTime,
+                    Date = request.Date,
+                    StartTime = request.TimeSlot?.StartTime,
+                    EndTime = request.TimeSlot?.EndTime,
                     IsBooked = true,
-                    RoomId = request.AvailableTimeSlot?.RoomId
+                    RoomId = request.RoomId
                 }
             };
         }
