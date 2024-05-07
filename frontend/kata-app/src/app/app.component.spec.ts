@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'kata-app' title`, () => {
+  it(`should have the 'CPEG Kata booking' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('kata-app');
+    expect(app.title).toEqual('CPEG Kata booking');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, kata-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, CPEG Kata booking');
   });
 });
