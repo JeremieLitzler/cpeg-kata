@@ -16,13 +16,12 @@ namespace Kata.Booking.Core.Business.Extensions
             {
                 Id = Guid.NewGuid().ToString(),
                 Booker = request.Booker,
-                BookingTimeSlot = new BookingTimeSlot()
+                BookingDetails = new BookingDetails()
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Date = request.Date,
+                    Date = request.Date.Value.Date,
                     StartTime = request.TimeSlot?.StartTime,
                     EndTime = request.TimeSlot?.EndTime,
-                    IsBooked = true,
                     RoomId = request.RoomId
                 }
             };

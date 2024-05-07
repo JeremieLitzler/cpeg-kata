@@ -18,7 +18,7 @@ namespace Kata.Booking.Core.Business.Services
                 return bookings;
             }
 
-            return bookings.Where(booking => booking.BookingTimeSlot?.RoomId == roomId);
+            return bookings.Where(booking => booking.BookingDetails?.RoomId == roomId);
         }
 
         public string MakeBooking(BookingRequest request)

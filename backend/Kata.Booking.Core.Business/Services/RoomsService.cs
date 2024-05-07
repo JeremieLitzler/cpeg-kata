@@ -14,7 +14,7 @@ namespace Kata.Booking.Core.Business.Services
         public IEnumerable<TimeSlot> GetAvailability(string roomId, DateTime requestDate)
         {
             var bookings = new DatabaseReader().ReadDatabase<Dto.Booking>(DatabaseStruct.BookingsDb);
-            var bookingsForRequestDate = bookings.Where(booking => booking.BookingTimeSlot?.Date?.Date == requestDate.Date).ToList();
+            var bookingsForRequestDate = bookings.Where(booking => booking.BookingDetails?.Date?.Date == requestDate.Date).ToList();
             var availableSlots = GenerateTimeSlots().Where(slot => !IsSlotBooked(bookingsForRequestDate, slot));
 
             return availableSlots;
@@ -22,7 +22,7 @@ namespace Kata.Booking.Core.Business.Services
 
         public bool IsSlotBooked(List<Dto.Booking> bookings, TimeSlot slot)
         {
-            var result = bookings.Any(booking => booking.BookingTimeSlot?.StartTime == slot.StartTime && booking.BookingTimeSlot?.EndTime == slot.EndTime);
+            var result = bookings.Any(booking => booking.BookingDetails?.StartTime == slot.StartTime && booking.BookingDetails?.EndTime == slot.EndTime);
             return result;
         }
 

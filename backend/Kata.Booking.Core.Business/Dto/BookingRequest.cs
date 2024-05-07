@@ -11,8 +11,6 @@ namespace Kata.Booking.Core.Business.Dto
         [Required(ErrorMessage = "Date is required")]
         //TODO > could check the date is not in the past
         public DateTime? Date { get; set; }
-        public Boolean IsBooked { get; set; }
-
 
         public void Validate()
         {

@@ -6,11 +6,11 @@ namespace Kata.Booking.Core.Business.Dto
     public class TimeSlot
     {
         [Required(ErrorMessage = "Start Time is required")]
-        [TimeValidator]
+        [CustomTimeValidator]
         public string? StartTime { get; set; }
 
         [Required(ErrorMessage = "End Time is required")]
-        [TimeValidator]
+        [CustomTimeValidator]
         public string? EndTime { get; set; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace Kata.Booking.Core.Business.Dto
         /// TODO > Use validation rules using annotations
         public void Validate()
         {
-            Validators.DtoValidator.Validate(this);
+            DtoValidator.Validate(this);
         }
 
     }
