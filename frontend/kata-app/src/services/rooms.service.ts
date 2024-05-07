@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import Room from '../types/Room';
-import TimeSlot from '../types/TimeSlot';
-import Booking from '../types/Booking';
-
-const BASE_URL = process.env['API_BASE'];
+import Room from '../models/Room';
+import TimeSlot from '../models/TimeSlot';
+import Booking from '../models/Booking';
+import { API_BASE } from './app.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class RoomsService {
   constructor(private http: HttpClient) { }
 
   getRooms(): Observable<Room[]> {
-    const url = `${BASE_URL}/Rooms`;
+    const url = `${API_BASE}/Rooms`;
     return this.http.get<Room[]>(url)
       .pipe(
         catchError(this.handleError)
@@ -24,7 +23,7 @@ export class RoomsService {
   }
   
   getRoomAvailability(roomId: string, requestDate: string): Observable<TimeSlot[]> {
-    const url = `${BASE_URL}/Rooms/${roomId}/availability/date=${requestDate}`;
+    const url = `${API_BASE}/Rooms/${roomId}/availability/date=${requestDate}`;
     return this.http.get<TimeSlot[]>(url)
       .pipe(
         catchError(this.handleError)
@@ -32,7 +31,7 @@ export class RoomsService {
   }
   
   getRoomBookings(roomId: string): Observable<Booking[]> {
-    const url = `${BASE_URL}/Rooms/${roomId}/bookings`;
+    const url = `${API_BASE}/Rooms/${roomId}/bookings`;
     return this.http.delete<Booking[]>(url)
       .pipe(
         catchError(this.handleError)

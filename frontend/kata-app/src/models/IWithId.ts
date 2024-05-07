@@ -1,3 +1,3 @@
 export default interface IWithId {
-    Id?: string;
+    id?: string;
 }

@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="left-side">
+        <h2>Make a booking</h2> 
+        <form (ngSubmit)="onSubmitBooking()">
+            <div class="form-group">
+                <label for="roomId">Select a room</label>
+                <input id="roomId" type="text">
+            </div>
+            <div class="form-group">
+                <label for="bookingdate"></label>
+                <input id="bookingdate" type="date">
+            </div>
+            <div class="form-group">
+                <label for="timeSlot"></label>
+                <input id="timeSlot" type="text" list="">
+                <datalist id="timeSlot">
+                    <option value="Morning">
+                    <option value="Afternoon">
+                    <option value="Evening">
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label for="bookingdate"></label>
+                <input id="bookingdate" type="date">
+            </div>
+            <button type="submit">Book Now</button>
+          </form>
+          
+    </div>
+</div>
