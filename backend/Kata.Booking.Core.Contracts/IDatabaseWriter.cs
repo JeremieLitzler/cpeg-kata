@@ -2,6 +2,7 @@
 {
     public interface IDatabaseWriter
     {
-        void WriteDatabase(string path, string content);
+        void Add<T>(T entity);
+        void Remove<T>(string id) where T : IWithId;
     }
 }

@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Kata.Booking.Core.Contracts;
+using Newtonsoft.Json;
 
 namespace Kata.Booking.Core.Data
 {
-    public class DatabaseReader : Base
+    public class DatabaseReader : Base, IDatabaseReader
     {
         public List<T> ReadDatabase<T>(string dabatabaseFileName)
         {

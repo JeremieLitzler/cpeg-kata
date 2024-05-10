@@ -9,7 +9,7 @@ namespace BookingWebApi.Controllers
     /// Manages the bookings
     /// </summary>
     [ApiController]
-    [Route("api/v1.0/[controller]")]
+    [Route("api/v1/[controller]")]
     public class BookingsController : ControllerBase
     {
         private readonly IBookingsService _bookingsService;

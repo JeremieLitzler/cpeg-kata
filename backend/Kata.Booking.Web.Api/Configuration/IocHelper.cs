@@ -1,5 +1,9 @@
 ﻿using Kata.Booking.Core.Business.Interfaces;
 using Kata.Booking.Core.Business.Services;
+using Kata.Booking.Core.Business.Wrappers;
+using Kata.Booking.Core.Contracts;
+using Kata.Booking.Core.Data;
+using System.IO.Pipelines;
 
 namespace Kata.Booking.Web.Api.Configuration
 {
@@ -16,6 +20,9 @@ namespace Kata.Booking.Web.Api.Configuration
         {
             services.AddScoped<IRoomsService, RoomsService>();
             services.AddScoped<IBookingsService, BookingsService>();
+            //services.AddScoped<IFileWriter, FileWriter>();
+            services.AddScoped<IDatabaseReader, DatabaseReader>();
+            //TODO > Add DI for DatabaseWriter
         }
     }
 }

@@ -9,7 +9,7 @@ namespace BookingWebApi.Controllers
     /// Manages the Rooms
     /// </summary>
     [ApiController]
-    [Route("api/v1.0/[controller]")]
+    [Route("api/v1/[controller]")]
     public class RoomsController : ControllerBase
     {
         private readonly IRoomsService _roomsService;
@@ -48,10 +48,10 @@ namespace BookingWebApi.Controllers
         /// <returns>The slots available for the room and requested date</returns>
         [SwaggerResponse(500, "Thrown when unhandled exception is raised.")]
         [HttpGet]
-        [Route("{roomId}/availability/date={requestDate}")]
-        public IEnumerable<TimeSlot> GetTimeSlots(string roomId, DateTime requestDate)
+        [Route("{roomId}/availability/date={requestDateStr}")]
+        public IEnumerable<TimeSlot> GetTimeSlots(string roomId, string requestDateStr)
         {
-            return _roomsService.GetAvailability(roomId, requestDate);
+            return _roomsService.GetAvailability(roomId, requestDateStr);
         }
 
 

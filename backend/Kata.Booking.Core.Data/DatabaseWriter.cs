@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Kata.Booking.Core.Data
 {
-    public class DatabaseWriter : Base
+    public class DatabaseWriter : Base, IDatabaseWriter
     {
         private readonly IFileWriter _fileWriter;
         private string _databaseFile;

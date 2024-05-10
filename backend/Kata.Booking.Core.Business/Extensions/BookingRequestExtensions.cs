@@ -18,7 +18,6 @@ namespace Kata.Booking.Core.Business.Extensions
                 Booker = request.Booker,
                 BookingDetails = new BookingDetails()
                 {
-                    Id = Guid.NewGuid().ToString(),
                     Date = request.Date.Value.Date,
                     StartTime = request.TimeSlot?.StartTime,
                     EndTime = request.TimeSlot?.EndTime,

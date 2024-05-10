@@ -1,9 +1,12 @@
 ﻿using Kata.Booking.Core.Business.Dto;
+using Kata.Booking.Core.Business.Extensions;
 using Kata.Booking.Core.Business.Interfaces;
+using Kata.Booking.Core.Contracts;
 using Kata.Booking.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,14 +14,30 @@ namespace Kata.Booking.Core.Business.Services
 {
     public class RoomsService : IRoomsService
     {
-        public IEnumerable<TimeSlot> GetAvailability(string roomId, DateTime requestDate)
+        private readonly IDatabaseReader _databaseReader;
+        public RoomsService(IDatabaseReader databaseReader) {
+            _databaseReader = databaseReader;
+        }
+        public IEnumerable<TimeSlot> GetAvailability(string roomId, string requestDate)
         {
-            var bookings = new DatabaseReader().ReadDatabase<Dto.Booking>(DatabaseStruct.BookingsDb);
-            var bookingsForRequestDate = bookings.Where(booking => booking.BookingDetails?.Date.Date == requestDate.Date).ToList();
+            DateTime realRequestDate = DateTime.MinValue;
+            DateTime.TryParse(requestDate, out realRequestDate);
+
+            if (realRequestDate == DateTime.MinValue)
+            {
+                throw new HttpResponseException(System.Net.HttpStatusCode.UnprocessableEntity, "Date must be ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ).");
+            }
+
+            var bookings = _databaseReader.ReadDatabase<Dto.Booking>(DatabaseStruct.BookingsDb);
+
+            var bookingsForRequestDate = bookings
+                .Where(booking => booking.IsBookingMatchFilters(roomId, realRequestDate))
+                .ToList();
             var availableSlots = GenerateTimeSlots().Where(slot => !IsSlotBooked(bookingsForRequestDate, slot));
 
             return availableSlots;
         }
+
 
         public bool IsSlotBooked(List<Dto.Booking> bookings, TimeSlot slot)
         {
@@ -28,11 +47,11 @@ namespace Kata.Booking.Core.Business.Services
 
         public IEnumerable<Room> GetRooms()
         {
-            return new DatabaseReader().ReadDatabase<Room>(DatabaseStruct.RoomsDb);
+            return _databaseReader.ReadDatabase<Room>(DatabaseStruct.RoomsDb);
         }
 
 
-        public static List<TimeSlot> GenerateTimeSlots(int interval = 30)
+        public static List<TimeSlot> GenerateTimeSlots(int interval = 30, int limit = 10)
         {
             List<TimeSlot> slots = new List<TimeSlot>();
 
@@ -58,7 +77,7 @@ namespace Kata.Booking.Core.Business.Services
                 });
             }
 
-            return slots.Take(10).ToList(); // Limit to a maximum of 10 elements
+            return slots.Take(limit).ToList();
         }
     }
 }

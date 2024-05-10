@@ -20,6 +20,7 @@ if (swaggerEnabled)
     });
 }
 
+builder.Services.AddCors();
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
 //Disable the model state in the Validate methods
@@ -42,9 +43,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors(
+        options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
+    );
 app.UseAuthorization();
-
 app.MapControllers();
 app.UseMiddleware<ErrorMiddleware>();
 

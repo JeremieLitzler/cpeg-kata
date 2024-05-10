@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kata.Booking.Core.Business.Wrappers
 {
-    internal class FileWriter : IFileWriter
+    public class FileWriter : IFileWriter
     {
         public void WriteAllText(string path, string content)
         {
