@@ -1,6 +1,43 @@
-<div class="content">
-    <div class="left-side">
-        <h2>All bookings</h2>
-        
-    </div>
-</div>
+<section>
+  <div *ngIf="bookings.length === 0; then showNoBooking; else showTable"></div>
+</section>
+<ng-template #showNoBooking>
+  <h2 class="mt-5">Awesome, you're free!</h2>
+  <p>No booking yet.</p>
+  <a routerLink="/make-booking"> ⏩ Make a booking</a>
+</ng-template>
+<ng-template #showTable>
+  <h2>All bookings</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Room</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td scope="row">{{ booking.id }}</td>
+        <td>{{ booking.booker.lastname }}</td>
+        <td>{{ booking.booker.firstname }}</td>
+        <td>{{ booking.bookingDetails.roomName }}</td>
+        <td>{{ booking.bookingDetails.date | date : "dd.MM.yyyy" }}</td>
+        <td>
+          {{ booking.bookingDetails.startTime }}-{{
+            booking.bookingDetails.endTime
+          }}
+        </td>
+        <td>
+          <button class="btn btn-warning" (click)="remove(booking.id)">
+            ❌
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

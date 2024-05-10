@@ -1,9 +1,9 @@
-import Individual from './Individual'
-import TimeSlot from './TimeSlot'
+import { Individual } from './individual';
+import { TimeSlot } from './timeSlot';
 
-export default interface BookingRequest  {  
-    booker?: Individual
-    timeSlot?: TimeSlot
-    roomId: string
-    date?: Date
+export default interface BookingRequest {
+  booker: Individual;
+  timeSlot?: TimeSlot;
+  roomId?: string;
+  date?: string;
 }

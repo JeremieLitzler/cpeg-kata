@@ -1,28 +1,15 @@
-<main class="container">
-  <h1>{{ title }}</h1>
-  <div *ngIf="items.length === 0; else showList">
-    No booking yet.
-  </div>
-  <ng-template #showList>
-    <table *ngIf="items.length > 0" class="table mt-4">
-      <thead>
-      <th class="col">#</th>
-      <th class="col">Room</th>
-      <th class="col">Lastname</th>
-      <th class="col">Date</th>
-      <th class="col"></th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of items">
-        <td>{{ item.id }}</td>
-        <td>{{ item.bookingDetails?.roomId }}</td>
-        <td>{{ item.booker?.lastname }}</td>
-        <td>{{ item.bookingDetails?.date?.toDateString() }}</td>
-        <td>
-          X
-          <!-- <button (click)="delete(item.id)">Delete</button> -->
-        </tr>
-      </tbody>
-    </table>
-  </ng-template>
+<header class="d-flex align-items-center">
+  <h1 class="flex-grow-1">{{ title }}</h1>
+  <nav class="d-flex gap-2 justify-self-end">
+    <a routerLink="/bookings">Bookings</a>
+    <a routerLink="/make-booking">Make a booking</a>
+  </nav>
+</header>
+<main class="container mt-5 mb-5">
+  <router-outlet></router-outlet>
 </main>
+<footer>
+  <section class="container pt-4 pb-4">
+    Copyright © Jeremie Litzler, 2024
+  </section>
+</footer>

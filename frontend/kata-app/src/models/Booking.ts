@@ -1,8 +1,8 @@
-import IWithId from './IWithId';
-import Individual from './Individual';
-import BookingDetails from './BookingDetails';
+import BookingDetails from './bookingDetails';
+import { Individual } from './individual';
 
- export default interface Booking extends IWithId {
-    booker?: Individual;
-    bookingDetails?: BookingDetails;
+export default interface Booking {
+  id: string;
+  booker: Individual;
+  bookingDetails: BookingDetails;
 }

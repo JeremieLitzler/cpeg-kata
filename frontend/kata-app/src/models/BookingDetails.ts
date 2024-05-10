@@ -1,6 +1,7 @@
 export default interface BookingDetails {
-    roomId: string
-    date: Date
-    startTime: string
-    endTime: string
+  roomId?: string;
+  roomName?: string;
+  date?: string;
+  startTime?: string;
+  endTime?: string;
 }

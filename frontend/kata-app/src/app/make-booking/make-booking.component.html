@@ -1,30 +1,92 @@
-<div class="content">
-    <div class="left-side">
-        <h2>Make a booking</h2> 
-        <form (ngSubmit)="onSubmitBooking()">
-            <div class="form-group">
-                <label for="roomId">Select a room</label>
-                <input id="roomId" type="text">
-            </div>
-            <div class="form-group">
-                <label for="bookingdate"></label>
-                <input id="bookingdate" type="date">
-            </div>
-            <div class="form-group">
-                <label for="timeSlot"></label>
-                <input id="timeSlot" type="text" list="">
-                <datalist id="timeSlot">
-                    <option value="Morning">
-                    <option value="Afternoon">
-                    <option value="Evening">
-                </datalist>
-            </div>
-            <div class="form-group">
-                <label for="bookingdate"></label>
-                <input id="bookingdate" type="date">
-            </div>
-            <button type="submit">Book Now</button>
-          </form>
-          
+<section role="form">
+  <h2>Make a booking</h2>
+  <!-- <form> -->
+  <div class="danger">{{ errorMessage }}</div>
+  <div class="input-group mb-3">
+    <div class="form-control">
+      <label for="bookingDate" class="form-label">Choose a booking date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="bookingDate"
+        name="bookingDate"
+        placeholder="dd.MM.YYYY"
+        [(ngModel)]="dateOfBooking"
+      />
     </div>
-</div>
+    <!--  Using a list of button since UX is better than a multi select -->
+    <div class="form-control d-flex flex-column gap-2 align-items-center">
+      <label>Pick a room</label>
+      <div class="d-flex gap-2">
+        <button
+          class="btn btn-primary mb-2"
+          [class.btn-info]="room === selectedRoom"
+          *ngFor="let room of rooms"
+          (click)="onRoomSelect(room)"
+        >
+          {{ room.name }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <div class="form-control d-flex flex-column">
+      <label>Select the time slot</label>
+      <button class="btn btn-secondary" (click)="getAvailableSlots()">
+        Load time slots
+      </button>
+      <div class="d-flex flex-wrap justify-content-evenly gap-2 mt-4">
+        <button
+          class="btn btn-primary mb-2"
+          [class.btn-info]="timeSlot === selectedSlot"
+          *ngFor="let timeSlot of timeSlots"
+          (click)="onTimeSlotSelect(timeSlot)"
+        >
+          {{ timeSlot.startTime }}-{{ timeSlot.endTime }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Your lastname</label>
+    <input
+      type="text"
+      class="form-control"
+      id="lastname"
+      name="lastname"
+      [(ngModel)]="bookerLastName"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="firstname" class="form-label">Your firstname</label>
+    <input
+      type="text"
+      class="form-control"
+      id="firstname"
+      name="firstname"
+      [(ngModel)]="bookerFirstName"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="birthDate" class="form-label">Your birthDate</label>
+    <input
+      type="date"
+      class="form-control"
+      id="birthDate"
+      name="birthDate"
+      [(ngModel)]="bookerBirthDate"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Your email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      [(ngModel)]="bookerEmail"
+    />
+  </div>
+  <button class="btn btn-primary" (click)="submitNewBooking()">Submit</button>
+  <!-- </form> -->
+</section>

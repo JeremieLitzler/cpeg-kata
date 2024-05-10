@@ -1,6 +1,6 @@
-export default interface Individual {
-    lastname?: string
-    firstname?: string
-    birthDate?: Date
-    email?: string
+export interface Individual {
+  lastname?: string;
+  firstname?: string;
+  birthDate?: string;
+  email?: string;
 }

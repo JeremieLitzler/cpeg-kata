@@ -1,1 +1,0 @@
-export const API_BASE = 'https://localhost:7234/api/v1.0';

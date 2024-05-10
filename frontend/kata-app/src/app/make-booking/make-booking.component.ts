@@ -1,73 +1,123 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RoomsService } from '../../services/rooms.service';
-import { BookingsService } from '../../services/bookings.service';
-import TimeSlot from '../../models/TimeSlot';
-import Room from '../../models/Room';
-import BookingRequest from '../../models/BookingRequest';
+import { Router } from '@angular/router';
+
+import { RoomsService } from '../services/rooms.service';
+import { Room } from '../../models/room';
+import { TimeSlot } from '../../models/timeSlot';
+import { Individual } from '../../models/individual';
+import { BookingsService } from '../services/bookings.service';
+import BookingDetails from '../../models/bookingDetails';
 
 @Component({
   selector: 'app-make-booking',
   templateUrl: './make-booking.component.html',
-  styleUrls: ['./make-booking.component.css'],
-  })
+  styleUrl: './make-booking.component.css',
+})
 export class MakeBookingComponent implements OnInit {
-
+  errorMessage?: string;
   rooms: Room[] = [];
-  selectedRoomId: string | null = null;
-  date: Date | null = null;
-  selectedTimeSlot: TimeSlot | null = null;
-  user: any = {}; // Object to hold user information
+  timeSlots: TimeSlot[] = [];
+  dateOfBooking?: string;
+  selectedRoom?: Room;
+  selectedSlot?: TimeSlot;
+  bookerLastName?: string;
+  bookerFirstName?: string;
+  bookerBirthDate?: string;
+  bookerEmail?: string;
 
-  constructor(private roomsService: RoomsService, private bookingsService: BookingsService) { }
+  constructor(
+    private router: Router,
+    private roomsService: RoomsService,
+    private bookingService: BookingsService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getRooms();
   }
-
-  getRooms() {
-    this.roomsService.getRooms()
-      .subscribe(rooms => this.rooms = rooms);
+  getRooms(): void {
+    this.roomsService.getRooms().subscribe((rooms) => (this.rooms = rooms));
+  }
+  onRoomSelect(room: Room) {
+    this.selectedRoom = room;
   }
 
-  // Function to handle room selection
-  onRoomSelect(roomId: string) {
-    this.selectedRoomId = roomId;
-    this.selectedTimeSlot = null; // Reset time slot on room change
-    this.getTimeSlotAvailability();
+  getAvailableSlots() {
+    console.log('getAvailableSlots', this.dateOfBooking);
+    console.log('getAvailableSlots', typeof this.dateOfBooking);
+
+    this.roomsService
+      .getRoomAvaibility(this.selectedRoom?.id, this.dateOfBooking)
+      .subscribe(
+        (timeSlots) => (this.timeSlots = timeSlots),
+        (err) => {
+          this.errorMessage = err;
+        }
+      );
+  }
+  onTimeSlotSelect(slot: TimeSlot) {
+    this.selectedSlot = slot;
   }
 
-  getTimeSlotAvailability() {
-    if (this.selectedRoomId) {
-      // Assuming you have a date input in your template
-      const selectedDate = new Date().getDate().toLocaleString();
-      this.roomsService.getRoomAvailability(this.selectedRoomId, selectedDate)
-        .subscribe(timeSlots => console.log('Time slots:', timeSlots));
+  validate(): string[] {
+    const errors: string[] = [];
+    if (this.dateOfBooking == undefined) {
+      errors.push('Missing booking date');
     }
-  }
+    if (this.selectedRoom == undefined) {
+      errors.push('Missing room');
+    }
+    if (this.selectedSlot == undefined) {
+      errors.push('Missing booking time');
+    }
+    if (this.bookerLastName == undefined) {
+      errors.push('Missing lastname');
+    }
+    if (this.bookerFirstName == undefined) {
+      errors.push('Missing firstname');
+    }
+    if (this.bookerBirthDate == undefined) {
+      errors.push('Missing birth date');
+    }
+    if (this.bookerEmail == undefined) {
+      errors.push('Missing email');
+    }
 
-  onTimeSlotSelect(timeSlot: TimeSlot) {
-    this.selectedTimeSlot = timeSlot;
+    return errors;
   }
+  submitNewBooking() {
+    console.log('start submit...');
 
-  // Function to handle booking submission
-  onSubmitBooking() {
-    const bookingData: BookingRequest = {
-      //Read from the date input in template
-      date: new Date(),
-      roomId: this.selectedRoomId || '',
-      timeSlot: this.selectedTimeSlot || {},
-      // Add user information from your form to bookingData
-      booker: this.user,
+    const errors = this.validate();
+    if (errors.length > 0) {
+      this.errorMessage = errors.join('\n\r');
+      return;
+    }
+    const booker: Individual = {
+      lastname: this.bookerLastName,
+      firstname: this.bookerFirstName,
+      birthDate: this.bookerBirthDate,
+      email: this.bookerEmail,
     };
-    this.bookingsService.createBooking(bookingData)
-      .subscribe(() => {
-        // Handle successful booking, e.g., clear form or show confirmation message
-      }, error => {
-        // Handle booking error
-        console.error('Error creating booking:', error);
-      });
-  }
+    const bookingDetails: BookingDetails = {
+      date: this.dateOfBooking,
+      roomId: this.selectedRoom?.id,
+      startTime: this.selectedSlot?.startTime,
+      endTime: this.selectedSlot?.endTime,
+    };
+    const bookingId = this.bookingService
+      .add({
+        booker,
+        timeSlot: this.selectedSlot,
+        date: this.dateOfBooking,
+        roomId: this.selectedRoom?.id,
+      })
+      .subscribe(
+        (id) => this.router.navigate(['/bookings']),
+        (err) => {
+          this.errorMessage = err;
+        }
+      );
 
-  // ... other component logic
+    console.log('MakeBookingComponent>submit>bookingId', bookingId);
+  }
 }
